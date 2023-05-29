@@ -20,4 +20,4 @@ const containDuplicates = (nums)=>{
 
 const nums = [1,2,3,1];
 const result = containDuplicates(nums);
-console.log(result);
+console.log(result); // true

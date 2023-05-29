@@ -28,4 +28,4 @@ const result  = (nums, target)=>{
      return [];
 }
 
-console.log(result(nums, target));
+console.log(result(nums, target)); // output : [0,1]

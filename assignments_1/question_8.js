@@ -12,3 +12,54 @@ Output: [2,3]
 
  */
 
+function findErrorNums(nums) {
+    let xorResult = 0;
+    let missingXOR = 0;
+  
+    // Step 2
+    for (let i = 0; i < nums.length; i++) {
+      xorResult ^= nums[i];
+      missingXOR ^= (i + 1);
+    }
+  
+    // Step 3
+    let rightmostBit = xorResult & ~(xorResult - 1);
+  
+    let num1 = 0;
+    let num2 = 0;
+  
+    // Step 5
+    for (let i = 0; i < nums.length; i++) {
+      let num = nums[i];
+      if (num & rightmostBit) {
+        num1 ^= num;
+      } else {
+        num2 ^= num;
+      }
+    }
+  
+    // Step 6
+    for (let i = 1; i <= nums.length; i++) {
+      let num = i;
+      if (num & rightmostBit) {
+        num1 ^= num;
+      } else {
+        num2 ^= num;
+      }
+    }
+  
+    // Step 7
+    for (let i = 0; i < nums.length; i++) {
+      let num = nums[i];
+      if (num === num1) {
+        return [num1, num2];
+      } else if (num === num2) {
+        return [num2, num1];
+      }
+    }
+  }
+  
+  let nums = [1, 2, 2, 4];
+  let result = findErrorNums(nums);
+  console.log(result); // output : [2,3]
+  

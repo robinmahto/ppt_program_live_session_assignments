@@ -33,4 +33,4 @@ function moveZeros(nums){
   
   const nums = [0,1,0,3,12];
   const result = moveZeros(nums);
-  console.log(result);
+  console.log(result); // output : [0,1,0,3,12]

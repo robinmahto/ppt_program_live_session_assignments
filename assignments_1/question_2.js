@@ -29,6 +29,6 @@ const removeNums = (nums, val)=>{
 const nums = [3,2,2,3];
 const val = 3;
 const result = removeNums(nums, val);
-console.log(result);
-console.log(nums.slice(0, result));
+console.log(result); // output : 2
+console.log(nums.slice(0, result)); // output : [2,2]
 
