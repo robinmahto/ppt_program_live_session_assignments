@@ -13,3 +13,32 @@ Output: 0
 
 Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
 */
+
+function minimumScore(nums, k) {
+  let minScore = Infinity;
+  let minNum = Math.min(...nums);
+  let maxNum = Math.max(...nums);
+  let initialScore = maxNum - minNum;
+   minScore = initialScore;
+
+  for (let i = 0; i < nums.length; i++) {
+    let num = nums[i];
+
+    let potentialMin = num - k;
+    let potentialMax = num + k;
+
+    if (potentialMin >= minNum && potentialMin <= maxNum) {
+      minScore = Math.min(minScore, potentialMax - minNum);
+    }
+    if (potentialMax >= minNum && potentialMax <= maxNum) {
+      minScore = Math.min(minScore, maxNum - potentialMin);
+    }
+  }
+
+  return minScore;
+}
+
+let nums = [1];
+let k = 0;
+let result = minimumScore(nums, k);
+console.log(result); // output : 0
