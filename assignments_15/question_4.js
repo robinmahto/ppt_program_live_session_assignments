@@ -11,4 +11,26 @@
 
  */
 
-dis
+function reverseStack(stack) {
+
+    // checking base conditions
+    if (stack.length <= 1) {
+        return stack;
+    }
+
+    console.log("reversedStack: ", stack);
+
+    const topElement = stack.pop();
+    const reversedStack = reverseStack(stack);
+
+    reversedStack.push(topElement);
+    return reversedStack;
+
+}
+
+const st1 = [3, 2, 1, 7, 6];
+const result = reverseStack(st1);
+// console.log(result);
+
+
+  
