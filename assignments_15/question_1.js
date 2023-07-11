@@ -32,21 +32,33 @@ element on right and hence -1.
  */
 
 
-class GreatestNumber {
-
-   constructor(nums, n){
-      this.num = nums;
-      this.target = n;
+function nextGreaterElement(arr) {
+   const result = [];
+   const stack = [];
+ 
+   for (let i = arr.length - 1; i >= 0; i--) {
+     while (stack.length > 0 && stack[stack.length - 1] <= arr[i]) {
+       stack.pop();
+     }
+ 
+     if (stack.length === 0) {
+       result.unshift(-1);
+     } else {
+       result.unshift(stack[stack.length - 1]);
+     }
+ 
+     stack.push(arr[i]);
    }
-
-   
-
-
-}
-
-
-const nums = [1,3,2,4];
-const n = 4;
-const result = new GreatestNumber(nums, n);
-console.log(result);
+ 
+   return result;
+ }
+ 
+ // Example 1:
+ const arr1 = [1, 3, 2, 4];
+ console.log(nextGreaterElement(arr1)); // Output: [3, 4, 4, -1]
+ 
+ // Example 2:
+ const arr2 = [6, 8, 0, 1, 3];
+ console.log(nextGreaterElement(arr2)); // Output: [8, -1, 1, 3, -1]
+ 
 
